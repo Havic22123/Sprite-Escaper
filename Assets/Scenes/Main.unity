@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14942a2b1489761408e5781143cfe947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current: 110.24
+  current: 100
   max: 100
   BarImage: {fileID: 0}
 --- !u!114 &1450425584
