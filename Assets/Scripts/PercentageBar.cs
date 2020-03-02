@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Bartracking : MonoBehaviour
-{
-    public float current = 100.0f;
 
-    public float max = 100.0f;
+public class PercentageBar : MonoBehaviour
+{
+    public float Current = 100.0f;
+
+    public float Max = 100.0f;
 
     public Image BarImage;
     // Start is called before the first frame update
@@ -20,11 +21,11 @@ public class Bartracking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float percentFilled = current / max;
+        float percentFilled = Current / Max;
         BarImage.fillAmount = percentFilled;
         if (percentFilled > 0.25)
         {
-            BarImage.color = Color.white;
+            BarImage.color = Color.green;
         }
         else
         {

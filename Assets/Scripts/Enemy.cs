@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    public float fieldOfView = 45f;
     // Keep track of our transform
     private Transform tf;
 
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CanHear(GameManager.instance.player);
         if (AIState == "Idle")
         {
             // Do the state behavior
@@ -112,5 +115,37 @@ public class Enemy : MonoBehaviour
     public bool isInRange()
     {
         return (Vector3.Distance(tf.position, target.position) <= AttackRange);
+    }
+
+    public bool CanHear(GameObject target)
+    {
+        // Get the noisemaker from our target
+        NoiseMaker noise = target.GetComponent<NoiseMaker>();
+        // If there is a noisemaker, we can potentially hear the target
+        if (noise != null)
+        {
+            float adjustedVolumeDistance =
+                noise.volumeDistance - Vector3.Distance(tf.position, target.transform.position);
+            // if we're close enough, we heard the noise
+            if (adjustedVolumeDistance > 0)
+            {
+                Debug.Log("I heard the noise");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool CanSee(GameObject target)
+    {
+        Vector3 vectorToTarget = target.transform.position - tf.position;
+        // Detect if target is inside FOV
+        float angleToTarget = Vector3.Angle(vectorToTarget, tf.up);
+        if (angleToTarget <= fieldOfView)
+        {
+            // Detect if target is in line of sight
+        }
+
+        return false;
     }
 }
