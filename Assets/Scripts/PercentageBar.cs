@@ -25,11 +25,11 @@ public class PercentageBar : MonoBehaviour
         BarImage.fillAmount = percentFilled;
         if (percentFilled > 0.25)
         {
-            BarImage.color = Color.green;
+            BarImage.color = Color.white;
         }
         else
         {
-            BarImage.color = Color.red;
+            BarImage.color = Color.grey;
         }
     }
 }
