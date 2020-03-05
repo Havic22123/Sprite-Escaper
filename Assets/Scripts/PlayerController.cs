@@ -19,6 +19,4 @@ public class PlayerController : Controller
         }
         pawn.Move();
     }
-
-
 }
